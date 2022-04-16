@@ -7,6 +7,8 @@ cat("\014")  # ctrl+L
 #import libraries
 library(httr)
 library(tidyverse)
+library(shiny)
+library(jsonlite)
 
 #function to parse amount of ram of validator.
 get_ram_amount <- function(str) {
@@ -24,10 +26,17 @@ get_step_time <- function(str) {
   sprintf("Commit step time of validator: %s",step)
 }
 
+
+IP <- "http://31.7.194.205:8888"
+ips <- GET(paste(IP,"/status",sep=""))
+ips_content <- fromJSON(rawToChar(ips$content), flatten=TRUE)
+ip_addresses <- ips_content$peers$address
+
+
 #get data with http request.
-result <- GET("http://65.21.235.219:8888/metrics")
+metrics <- GET(paste(IP,"/metrics",sep=""))
 #parse content of result to char.
-content <- rawToChar(result$content)
+content <- rawToChar(metrics$content)
 #take ram amount
 get_ram_amount(content)
 #take commit step time
