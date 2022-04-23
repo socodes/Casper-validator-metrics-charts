@@ -1,0 +1,6 @@
+Package: Call
+Title: Casper RPC Call
+Description: A Package that visualise step time and ram amount of casper validators
+Version: 1.0.0
+Author: Muhammed Didin (mdidinxy@gmail.com)
+License: MIT License

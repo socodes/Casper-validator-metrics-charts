@@ -9,6 +9,7 @@ library(httr)
 library(tidyverse)
 library(shiny)
 library(jsonlite)
+library(devtools)
 
 #function to parse amount of ram of validator.
 get_ram_amount <- function(str) {
@@ -145,5 +146,5 @@ draw_barchart(step_draw,step_names,"Number of validators","Step time (sn)","Step
 draw_barchart(ram_draw,ram_names,"Number of validators","RAM Amount (GB)","RAM Amount Chart")
 
 
-
+build("~/Desktop/Casper-rpc-call")
 
