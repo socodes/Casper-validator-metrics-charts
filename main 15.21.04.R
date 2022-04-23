@@ -91,7 +91,7 @@ ram_below_32 = 0
 ram_below_64 = 0
 ram_below_128 = 0
 ram_more_128 = 0
-
+#divide and count the ram amounts
 for (i in ram_vector) {
   if(i < 32000000000){
     ram_below_32 <- ram_below_32 +1
@@ -111,7 +111,7 @@ step_below_12 = 0
 step_below_24 = 0
 step_below_48 = 0
 step_more_48 = 0
-
+#divide and count the step times 
 for (i in step_vector) {
   if(!is.na(i)){
     i <- as.numeric(i)
@@ -133,16 +133,16 @@ for (i in step_vector) {
     }
   }
 }
+#prep data for visualization
 step_draw = c(step_below_6,step_below_12,step_below_24,step_below_48,step_more_48)
 step_names = c("below 6","below 12","below 24","below 48","more 48")
-
-draw_barchart(step_draw,step_names,"Number of validators","Step time","Step Time Chart")
-
 
 ram_draw = c(ram_below_32,ram_below_64,ram_below_128,ram_more_128)
 ram_names = c("below 32","below 64","below 128","more 128")
 
-draw_barchart(ram_draw,ram_names,"Number of validators","RAM Amount","RAM Amount Chart")
+#draw barcharts
+draw_barchart(step_draw,step_names,"Number of validators","Step time (sn)","Step Time Chart")
+draw_barchart(ram_draw,ram_names,"Number of validators","RAM Amount (GB)","RAM Amount Chart")
 
 
 
