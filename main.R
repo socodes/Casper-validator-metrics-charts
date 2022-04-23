@@ -30,9 +30,16 @@ parse_ip <- function(ip) {
   ip_ <- str_split(ip,":")
   return(ip_[[1]])
 }
-draw_barchart <- function(data, xstring,ystring) {
-  barplot(data$x_axis ~ data$y_axis, ylab = ystring, xlab = xstring,
-          horiz = FALSE)
+draw_barchart <- function(H,M,xlab_,ylab_,main_) {
+  # Give the chart file a name
+  png(file = "barchart_months_revenue.png")
+  
+  # Plot the bar chart 
+  barplot(H,names.arg=M,xlab=xlab_,ylab=ylab_,col="blue",
+          main=main_)
+  
+  # Save the file
+  dev.off()
 }
 
 
@@ -79,52 +86,55 @@ for (ip in ip_addresses) {
       }
     )
 }
-step_vector
-ram_below_32 = c()
-ram_below_64 = c()
-ram_below_128 = c()
-ram_more_128 = c()
+
+ram_below_32 = 0
+ram_below_64 = 0
+ram_below_128 = 0
+ram_more_128 = 0
 
 for (i in ram_vector) {
   if(i < 32000000000){
-    ram_below_32 <- append(ram_below_32,i)
+    ram_below_32 <- ram_below_32 +1
   }
   else if(i < 64000000000){
-    ram_below_64 <- append(ram_below_64,i)
+    ram_below_64 <- ram_below_64 +1
   }
   else if(i < 128000000000){
-    ram_below_128 <- append(ram_below_128,i)
+    ram_below_128 <- ram_below_128 +1
   }
   else{
-    ram_more_128 <- append(ram_more_128,i)
+    ram_more_128 <- ram_more_128 +1
   }
 }
-step_below_6 = c()
-step_below_12 = c()
-step_below_24 = c()
-step_below_48 = c()
-step_more_48 = c()
+step_below_6 = 0
+step_below_12 = 0
+step_below_24 = 0
+step_below_48 = 0
+step_more_48 = 0
 
 for (i in step_vector) {
   if(!is.na(i)){
     i <- as.numeric(i)
-    print(i)
+
     if(i < 6){
-      step_below_6 <- append(step_below_6,i)
+      step_below_6 <- step_below_6 +1
     }
     else if(i>6 & i < 12){
-      step_below_12 <- append(step_below_12,i)
+      step_below_12 <- step_below_12 +1
     }
     else if(i>12 && i < 24){
-      step_below_24 <- append(step_below_24,i)
+      step_below_24 <- step_below_24+1
     }
     else if(i>24 & i < 48){
-      step_below_48 <- append(step_below_48,i)
+      step_below_48 <- step_below_48+1
     }
     else if(i>48){
-      step_more_48 <- append(step_more_48,i)
+      step_more_48 <- step_more_48+1
     }
   }
 }
+
+
+
 
 
