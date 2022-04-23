@@ -44,6 +44,8 @@ ip_addresses <- ips_content$peers$address
 ram_vector <- c()
 step_vector <- c()
 
+error <- 0
+warning <- 0
 
 for (ip in ip_addresses) {
     tryCatch(
@@ -60,14 +62,69 @@ for (ip in ip_addresses) {
         step_vector <- append(step_vector,get_step_time(content))
       },
       error = function(e){
+        error <- error + 1
         message('Caught an error!')
         print(e)
+        sprintf("Total error %s",error)
       },
       warning = function(w){
+        warning <- warning + 1
         message('Caught an warning!')
         print(w)
+        sprintf("Total warning %s",warning)
+      },
+      finally = {
+        sprintf("Total error %s",error)
+        sprintf("Total warning %s",warning)
       }
     )
+}
+step_vector
+ram_below_32 = c()
+ram_below_64 = c()
+ram_below_128 = c()
+ram_more_128 = c()
+
+for (i in ram_vector) {
+  if(i < 32000000000){
+    ram_below_32 <- append(ram_below_32,i)
+  }
+  else if(i < 64000000000){
+    ram_below_64 <- append(ram_below_64,i)
+  }
+  else if(i < 128000000000){
+    ram_below_128 <- append(ram_below_128,i)
+  }
+  else{
+    ram_more_128 <- append(ram_more_128,i)
+  }
+}
+step_below_6 = c()
+step_below_12 = c()
+step_below_24 = c()
+step_below_48 = c()
+step_more_48 = c()
+
+for (i in step_vector) {
+  if(!is.na(i)){
+    i <- as.numeric(i)
+    print(i)
+    if(i < 6){
+      step_below_6 <- append(step_below_6,i)
+    }
+    else if(i>6 & i < 12){
+      step_below_12 <- append(step_below_12,i)
+    }
+    else if(i>12 && i < 24){
+      step_below_24 <- append(step_below_24,i)
+    }
+    else if(i>24 & i < 48){
+      step_below_48 <- append(step_below_48,i)
+    }
+    else if(i>48){
+      step_more_48 <- append(step_more_48,i)
+    }
+  }
 }
 
 
