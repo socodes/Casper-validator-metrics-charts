@@ -19,7 +19,7 @@ jobs:
         env: 
           repo_token: ${{ secrets.GITHUB_TOKEN }} 
         run: |
-          R -e 'renv::run("main.R")'
+          R -e 'renv::run("../main.R")'
           # Add picture
           cml-publish RAM Amount Chart.png --md > report.md 
           # Add picture
