@@ -15,7 +15,7 @@ jobs:
           R -e 'install.packages("renv")' 
           R -e 'renv::restore()'
           
-      - name: Analyze some casper validators
+      - name: Analyze some cspr validators
         env: 
           repo_token: ${{ secrets.GITHUB_TOKEN }} 
         run: |
