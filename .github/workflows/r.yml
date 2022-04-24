@@ -15,7 +15,7 @@ jobs:
           R -e 'install.packages("renv")' 
           R -e 'renv::restore()'
           
-      - name: Analyze some penguin beaks
+      - name: Analyze some casper validators
         env: 
           repo_token: ${{ secrets.GITHUB_TOKEN }} 
         run: |
