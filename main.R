@@ -65,15 +65,19 @@ ram_below_128 = 0
 ram_more_128 = 0
 #divide and count the ram amounts
 for (i in ram_vector) {
+  #count ram amount < 32 GB
   if(i < 32000000000){
     ram_below_32 <- ram_below_32 +1
   }
+  #count ram 32 GB< amount < 64 GB
   else if(i < 64000000000){
     ram_below_64 <- ram_below_64 +1
   }
+  #count ram 64 GB< amount < 128 GB
   else if(i < 128000000000){
     ram_below_128 <- ram_below_128 +1
   }
+  #count ram  amount > 128 GB
   else{
     ram_more_128 <- ram_more_128 +1
   }
