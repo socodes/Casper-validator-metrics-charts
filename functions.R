@@ -14,7 +14,7 @@ get_step_time <- function(str) {
   
   return(step)
 }
-
+#parse the ip by ':' and return the first part
 parse_ip <- function(ip) {
   ip_ <- str_split(ip,":")
   return(ip_[[1]])

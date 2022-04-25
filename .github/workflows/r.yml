@@ -28,6 +28,7 @@ jobs:
         R -e 'install.packages("shiny")'
         R -e 'install.packages("jsonlite")'
         R -e 'install.packages("devtools")'
+        R -e 'install.packages("tidyverse")'
     # Run R script
     - name: Scrape
       run: Rscript main.R

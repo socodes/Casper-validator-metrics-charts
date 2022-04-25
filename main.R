@@ -9,7 +9,7 @@ source("functions.R")
 
 #import libraries
 library(httr)
-library(tidyverse)
+
 library(shiny)
 library(jsonlite)
 library(devtools)
@@ -48,13 +48,11 @@ for (ip in ip_addresses) {
       error = function(e){
         message('Caught an error!')
         print(e)
-        sprintf("Total error %s",error)
       },
       #if there is an warning, print the warning description
       warning = function(w){
         message('Caught an warning!')
         print(w)
-        sprintf("Total warning %s",warning)
       }
     )
 }
@@ -89,21 +87,26 @@ step_below_48 = 0
 step_more_48 = 0
 #divide and count the step times 
 for (i in step_vector) {
+  #be sure that value is not na
   if(!is.na(i)){
     i <- as.numeric(i)
-
+    #count step time < 6
     if(i < 6){
       step_below_6 <- step_below_6 +1
     }
+    #count  6 < step time < 12
     else if(i>6 & i < 12){
       step_below_12 <- step_below_12 +1
     }
+    #count  12 < step time < 24
     else if(i>12 && i < 24){
       step_below_24 <- step_below_24+1
     }
+    #count  24 < step time < 48
     else if(i>24 & i < 48){
       step_below_48 <- step_below_48+1
     }
+    #count step time > 48
     else if(i>48){
       step_more_48 <- step_more_48+1
     }
