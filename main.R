@@ -15,17 +15,20 @@ library(jsonlite)
 library(devtools)
 
 
-
+#target IP
 IP <- "http://31.7.194.205:8888"
+#add '/status' to get validators'
 ips <- GET(paste(IP,"/status",sep=""))
+#Cast to JSON.
 ips_content <- fromJSON(rawToChar(ips$content), flatten=TRUE)
+#get IP addresses of related validators
 ip_addresses <- ips_content$peers$address
 
+#create empty ram_vector
 ram_vector <- c()
+#create empty step_vector
 step_vector <- c()
 
-error <- 0
-warning <- 0
 
 for (ip in ip_addresses) {
     tryCatch(
@@ -41,20 +44,16 @@ for (ip in ip_addresses) {
         #take commit step time
         step_vector <- append(step_vector,get_step_time(content))
       },
+      #if there is an error, print the error description
       error = function(e){
-        error <- error + 1
         message('Caught an error!')
         print(e)
         sprintf("Total error %s",error)
       },
+      #if there is an warning, print the warning description
       warning = function(w){
-        warning <- warning + 1
         message('Caught an warning!')
         print(w)
-        sprintf("Total warning %s",warning)
-      },
-      finally = {
-        sprintf("Total error %s",error)
         sprintf("Total warning %s",warning)
       }
     )
