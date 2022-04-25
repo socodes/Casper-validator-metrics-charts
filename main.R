@@ -9,11 +9,10 @@ source("functions.R")
 
 #import libraries
 library(httr)
-
 library(shiny)
 library(jsonlite)
 library(devtools)
-
+library(tidyverse)
 
 #target IP
 IP <- "http://31.7.194.205:8888"
@@ -53,6 +52,7 @@ for (ip in ip_addresses) {
       warning = function(w){
         message('Caught an warning!')
         print(w)
+       
       }
     )
 }
