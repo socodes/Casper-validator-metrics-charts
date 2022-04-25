@@ -5,7 +5,7 @@ rm(list = ls())
 cat("\014")  # ctrl+L
 
 #importing functions.R file.
-source("functions.R")
+source("R/functions.R")
 
 #import libraries
 library(httr)
@@ -253,9 +253,6 @@ draw_barchart(ram_draw,ram_names,"Number of validators","RAM Amount (GB)","RAM A
 
 
 build("~/Desktop/Casper-rpc-call")
-
-devtools::spell_check()
-devtools::release()
 
 
 
