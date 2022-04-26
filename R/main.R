@@ -124,4 +124,4 @@ draw_barchart(step_draw,step_names,"Number of validators","Step time (sn)","Step
 draw_barchart(ram_draw,ram_names,"Number of validators","RAM Amount (GB)","RAM Amount Chart")
 
 
-build("~/Desktop/Casper-rpc-call")
+#build("~/Desktop/Casper-rpc-call")
