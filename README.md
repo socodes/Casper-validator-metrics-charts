@@ -50,7 +50,10 @@ R CMD INSTALL Call_1.0.0.tar.gz
 - install required packages from command line as:
 install.package(PACKAGE_NAME)
 - Change current working directory to repository location.
-- Run the script: "Rscript main.R"
+- Run the script:
+```
+ Rscript main.R
+```
 
 
 ## Sample Outputs:
