@@ -1,9 +1,0 @@
-Package: CasperValidatorMetricsChart
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Muhammed Didin (mdidinxy@gmail.com)
-Description: A Package that visualise step time and ram amount of casper validators
-License: MIT License
-Encoding: UTF-8
-LazyData: true
