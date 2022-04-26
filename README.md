@@ -1,4 +1,4 @@
-
+[![Run main](https://github.com/socodes/Casper-validator-metrics-charts/actions/workflows/r.yml/badge.svg)](https://github.com/socodes/Casper-validator-metrics-charts/actions/workflows/r.yml)
 
 # Casper Validators' Metrics Charts
 
