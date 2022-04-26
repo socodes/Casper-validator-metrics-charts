@@ -138,4 +138,4 @@ draw_barchart(ram_draw,ram_names,"RAM Amount (GB)","Number of validators","RAM A
 
 
 #build("~/Desktop/Casper-validator-metrics-charts")
-devtools::install()
+
