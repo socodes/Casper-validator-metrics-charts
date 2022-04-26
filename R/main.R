@@ -120,8 +120,9 @@ ram_draw = c(ram_below_32,ram_below_64,ram_below_128,ram_more_128)
 ram_names = c("below 32","below 64","below 128","more 128")
 
 #draw barcharts
-draw_barchart(step_draw,step_names,"Number of validators","Step time (sn)","Step Time Chart")
-draw_barchart(ram_draw,ram_names,"Number of validators","RAM Amount (GB)","RAM Amount Chart")
+draw_barchart(step_draw,step_names,"Step time (sn)","Number of validators","Step Time Chart")
+draw_barchart(ram_draw,ram_names,"RAM Amount (GB)","Number of validators","RAM Amount Chart")
 
 
 #build("~/Desktop/Casper-validator-metrics-charts")
+devtools::install()
