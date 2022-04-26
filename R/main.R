@@ -89,7 +89,7 @@ step_more_48 = 0
 for (i in step_vector) {
   #be sure that value is not na
   if(!is.na(i)){
-    i <- as.numeric(i)
+    #i <- as.numeric(i)
     #count step time < 6
     if(i < 6){
       step_below_6 <- step_below_6 +1
