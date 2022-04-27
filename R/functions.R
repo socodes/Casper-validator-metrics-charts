@@ -36,3 +36,4 @@ draw_barchart <- function(H,M,xlab_,ylab_,main_) {
   # Save the file
   dev.off()
 }
+containsOnlyNumbers = function(x) !is.na(as.numeric(x))

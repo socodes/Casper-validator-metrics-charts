@@ -9,7 +9,6 @@ source("R/functions.R")
 
 #import libraries
 library(httr)
-library(shiny)
 library(jsonlite)
 library(devtools)
 library(tidyverse)
@@ -86,45 +85,53 @@ step_below_24 = 0
 step_below_32 = 0
 step_below_48 = 0
 step_more_48 = 0
+na <- 0
 #divide and count the step times
 for (i in step_vector) {
 
   #be sure that value is not na
   if(!is.na(i)){
-    #i <- as.numeric(i)
+    if(containsOnlyNumbers(i)){
+      i <- as.numeric(i)
+      #count step time < 6
+      if(i <= 6){
+        step_below_6 <- step_below_6 +1
 
-    #count step time < 6
-    if(i <= 6){
-      step_below_6 <- step_below_6 +1
+      }
+      #count  6 < step time < 12
+      else if(i>6 & i <= 12){
+        step_below_12 <- step_below_12 +1
 
+      }
+      #count  12 < step time < 24
+      else if(i>12 & i <= 24){
+        step_below_24 <- step_below_24+1
+
+      }
+      #count  12 < step time < 24
+      else if(i>24 & i <= 32){
+        step_below_32 <- step_below_32+1
+
+      }
+      #count  24 < step time < 48
+      else if(i>24 & i <= 48){
+        step_below_48 <- step_below_48+1
+
+      }
+      #count step time > 48
+      else if(i>=48){
+        step_more_48 <- step_more_48+1
+      }
     }
-    #count  6 < step time < 12
-    else if(i>6 & i <= 12){
-      step_below_12 <- step_below_12 +1
-
-    }
-    #count  12 < step time < 24
-    else if(i>12 & i <= 24){
-      step_below_24 <- step_below_24+1
-
-    }
-    #count  12 < step time < 24
-    else if(i>24 & i <= 32){
-      step_below_32 <- step_below_32+1
-
-    }
-    #count  24 < step time < 48
-    else if(i>24 & i <= 48){
-      step_below_48 <- step_below_48+1
-
-    }
-    #count step time > 48
-    else if(i>48){
-      step_more_48 <- step_more_48+1
-
+    else{
+      #print(i)
     }
   }
+  else{
+    na <- na+1
+  }
 }
+
 #prep data for visualization
 step_draw = c(step_below_6,step_below_12,step_below_24,step_below_32,step_below_48,step_more_48)
 step_names = c("below 6"," 6<x<12","12<x<24","24<x<32","32<x<48","x>48")
